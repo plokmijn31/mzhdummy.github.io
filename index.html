@@ -3,10 +3,49 @@
   <head>
     <meta charset="UTF-8"/>
     <title>Plokmijn31 Page</title>
+    <style type="text/css">
+      #div1 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+    </style>
+    <script>
+      function allowDrop(ev)
+        {
+          ev.preventDefault();
+        }
+      function drag(ev)
+        {
+          ev.dataTransfer.setdata("text",ev.target.id);
+        }
+      function drop(ev)
+        {
+          ev.preventDefault();
+          var data=ev.dataTransfer.getdata("text");
+          ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
   </head>
   <body>
     <h1 style="text-align:center;">Plokmijn31 Page</h1>
     <a>Hello to Plokmijn31 Page!</a>
     <a href="plokmijn31.github.io">Go to the site</a>
+    <script>
+      var x=document.getElementById("src");
+      function getLocation()
+        {
+          if (navigator.geolocation)
+          {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          }
+          else
+          {
+            x.innerHTML="浏览器不支持获取位置。";
+          }
+        }
+
+      function showPosition(position)
+        {
+          x.innerHTML="纬度："+ position.coords.latitude +
+          "<br>经度：" + position.coords.longitude;
+        }
+    </script>
   </body>
 </HTML>
